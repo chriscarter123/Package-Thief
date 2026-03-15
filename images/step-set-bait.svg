@@ -1,0 +1,24 @@
+<svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Box body -->
+  <rect x="18" y="32" width="74" height="64" rx="3" stroke="#1a1a1a" stroke-width="2.5" fill="white"/>
+  <!-- Box center seam -->
+  <line x1="55" y1="32" x2="55" y2="96" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- Box horizontal line (closed top flaps) -->
+  <line x1="18" y1="50" x2="92" y2="50" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- Tape strip -->
+  <rect x="44" y="32" width="22" height="18" rx="1" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
+
+  <!-- Bandit/domino mask -->
+  <!-- Left eye hole -->
+  <ellipse cx="38" cy="72" rx="13" ry="10" fill="#1a1a1a"/>
+  <ellipse cx="38" cy="72" rx="9" ry="6.5" fill="white"/>
+  <!-- Right eye hole -->
+  <ellipse cx="72" cy="72" rx="13" ry="10" fill="#1a1a1a"/>
+  <ellipse cx="72" cy="72" rx="9" ry="6.5" fill="white"/>
+  <!-- Mask bridge connecting the two eye holes -->
+  <rect x="51" y="64" width="8" height="16" fill="#1a1a1a"/>
+  <!-- Mask string left -->
+  <path d="M25 66 Q14 62 12 56" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Mask string right -->
+  <path d="M85 66 Q96 62 98 56" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dear Package Thief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======= HERO ======= -->
+  <header class="hero">
+    <h1>Dear Package Thief</h1>
+
+    <div class="hero-mascot">
+      <video class="mascot-video" autoplay loop muted playsinline aria-label="Animated box mascot">
+        <source src="images/hero-video/mascot.webm" type="video/webm">
+        <source src="images/hero-video/0001-0060.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <p class="hero-subtitle">
+      Send a message to your package thief. We believe<br>every package thief needs
+    </p>
+  </header>
+
+  <!-- ======= STEPS ======= -->
+  <section class="steps">
+    <div class="steps-grid">
+
+      <div class="step">
+        <!-- REPLACE: swap step-find-box.svg for exported Figma asset -->
+        <img src="images/icons/openbox.png" alt="Open cardboard box" class="step-icon" />
+        <h3>1. Find an old box</h3>
+        <p>Use an old package box or find a neighbors.</p>
+      </div>
+
+      <div class="step">
+        <!-- REPLACE: swap step-load-up.svg for exported Figma asset -->
+        <img src="images/icons/trash Icon.png" alt="Gifts and items" class="step-icon" />
+        <h3>2. Load it up</h3>
+        <p>Customize your package with gifts for your package thief.</p>
+      </div>
+
+      <div class="step">
+        <!-- REPLACE: swap step-set-bait.svg for exported Figma asset -->
+        <img src="images/icons/sneakybox.png" alt="Box disguised as bait" class="step-icon" />
+        <h3>3. Set the bait</h3>
+        <p>Set it on our porch and lie in wait! Post a photo with #dearpackagethief</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= CUSTOMIZE ======= -->
+  <section class="customize">
+    <h2>Customize your &ldquo;care package&rdquo;</h2>
+
+    <div class="cards-grid">
+
+      <!-- ── Item cards ─────────────────────────────────── -->
+
+      <div class="card card--item">
+        <div class="card-visual card-emoji"><img src="images/icons/poop.png"></div>
+        <strong>Dog sh*t</strong>
+        <p>Give them something that will last.</p>
+        <a href="#" class="card-link" onclick="openFinderModal(event)">Find nearby dog parks</a>
+      </div>
+
+      <div class="card card--item">
+        <!-- REPLACE: swap for Figma life-preserver illustration if available -->
+        <div class="card-visual card-emoji"><img src="images/icons/lifesaver.png"></div>
+        <strong>Resources Sheet</strong>
+        <p>Community resources to help them out</p>
+        <a href="#resources" class="card-link">Print</a>
+      </div>
+
+      <div class="card card--item">
+        <!-- REPLACE: swap for Figma chocolate bar illustration if available -->
+        <div class="card-visual card-emoji"><img src="images/icons/snack.png"></div>
+        <strong>Snacks</strong>
+        <p>A candy bar or two</p>
+        <a href="javascript:window.print()" class="card-link">Print</a>
+      </div>
+
+      <!-- ── Message / print cards ──────────────────────── -->
+
+      <div class="card card--message">
+        <blockquote>What would your mother think?</blockquote>
+        <a href="#" class="card-link"
+           data-message="What would your mother think?"
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message">
+        <blockquote>With your skill you can do a lot more with your life.</blockquote>
+        <a href="#" class="card-link"
+           data-message="With your skill you can do a lot more with your life."
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message">
+        <blockquote>Stealing is wrong. You can be better.</blockquote>
+        <a href="#" class="card-link"
+           data-message="Stealing is wrong. You can be better."
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message">
+        <blockquote>What does it profit a man to gain the whole world, yet forfeit his soul?<br><em>Mark 8:36</em></blockquote>
+        <a href="#" class="card-link"
+           data-message="What does it profit a man to gain the whole world, yet forfeit his soul? Mark 8:36"
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message">
+        <blockquote>Times are tough. But this isn&rsquo;t the way. Here&rsquo;s a few bucks. Please don&rsquo;t steal my packages.</blockquote>
+        <a href="#" class="card-link"
+           data-message="Times are tough. But this isn't the way. Here's a few bucks. Please don't steal my packages."
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message card--small-text">
+        <blockquote>
+          <p><strong>Mickey:</strong> You had the talent to become a good fighter, but instead of that, you become a legbreaker to some cheap, second rate loanshark!</p>
+          <p><strong>Rocky:</strong> It&rsquo;s a living.</p>
+          <p><strong>Mickey:</strong> It&rsquo;s a waste of life!</p>
+        </blockquote>
+        <a href="#" class="card-link"
+           data-message="Mickey: You had the talent to become a good fighter, but instead of that, you become a legbreaker to some cheap, second rate loanshark!&#10;Rocky: It's a living.&#10;Mickey: It's a waste of life!"
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <div class="card card--message card--has-qr">
+        <blockquote>What are you doing?<br>Put that back!<br>You&rsquo;re better than that!</blockquote>
+        <!-- REPLACE: qr-code.svg/png exported from Figma -->
+        <img src="images/qr-code.png" alt="QR code" class="qr-img" onerror="this.style.display='none'" />
+        <a href="#" class="card-link"
+           data-message="What are you doing?&#10;Put that back!&#10;You're better than that!"
+           onclick="printCard(this,event)">Print</a>
+      </div>
+
+      <!-- ── Action cards ───────────────────────────────── -->
+
+      <div class="card card--action">
+        <div class="card-visual card-emoji">✍️</div>
+        <strong>Write your own message</strong>
+        <a href="#" class="card-link" onclick="openWriteModal(event)">Submit</a>
+      </div>
+
+      <div class="card card--action">
+        <div class="card-visual card-emoji">💡</div>
+        <strong>Submit an idea</strong>
+        <a href="#submit-idea" class="card-link">Submit</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= DOG PARK FINDER MODAL ======= -->
+  <div class="modal-backdrop" id="finder-modal" aria-modal="true" role="dialog" aria-labelledby="modal-title" hidden>
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2 id="modal-title">Enter your zip code</h2>
+        <button class="modal-close" onclick="closeFinderModal()" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <input
+          type="text"
+          id="zip-input"
+          maxlength="5"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          class="zip-input"
+        />
+        <p id="zip-error" class="zip-error" aria-live="polite"></p>
+
+        <ul id="parks-list" class="modal-parks-list"></ul>
+      </div>
+
+    </div><!-- /.modal -->
+  </div><!-- /.modal-backdrop -->
+
+  <!-- ======= WRITE MESSAGE MODAL ======= -->
+  <div class="modal-backdrop" id="write-modal" aria-modal="true" role="dialog" aria-labelledby="write-modal-title" hidden>
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2 id="write-modal-title">Write a message</h2>
+        <button class="modal-close" onclick="closeWriteModal()" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <textarea
+          id="write-message"
+          class="write-textarea"
+          placeholder=""
+          rows="8"
+        ></textarea>
+
+        <label class="write-share-label">
+          <input type="checkbox" id="write-share" class="write-checkbox" checked />
+          Share my message and maybe we&rsquo;ll post it
+        </label>
+
+        <button class="write-print-btn" onclick="printMessage()">Print</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <p>#dearpackagethief</p>
+    <p class="footer-sub">Philadelphia, PA · Data from OpenDataPhilly, BringFido &amp; community sources</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

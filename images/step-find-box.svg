@@ -1,0 +1,17 @@
+<svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Box front face -->
+  <rect x="15" y="42" width="80" height="58" rx="2" stroke="#1a1a1a" stroke-width="2.5" fill="white"/>
+  <!-- Box center vertical seam -->
+  <line x1="55" y1="42" x2="55" y2="100" stroke="#1a1a1a" stroke-width="1.5"/>
+  <!-- Tape strip across middle -->
+  <rect x="15" y="65" width="80" height="10" rx="1" stroke="#1a1a1a" stroke-width="1.5" fill="none" stroke-dasharray="0"/>
+
+  <!-- Left flap open (angled left) -->
+  <path d="M15 42 L8 14 L55 14 L55 42" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" fill="white"/>
+  <!-- Right flap open (angled right) -->
+  <path d="M55 42 L55 14 L102 14 L95 42" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" fill="white"/>
+
+  <!-- Inside box shadow lines -->
+  <line x1="20" y1="44" x2="20" y2="56" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+  <line x1="90" y1="44" x2="90" y2="56" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+</svg>
