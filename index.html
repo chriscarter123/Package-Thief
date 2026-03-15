@@ -16,10 +16,7 @@
     <h1>Dear Package Thief</h1>
 
     <div class="hero-mascot">
-      <video class="mascot-video" autoplay loop muted playsinline aria-label="Animated box mascot">
-        <source src="images/hero-video/mascot.webm" type="video/webm">
-        <source src="images/hero-video/0001-0060.mp4" type="video/mp4">
-      </video>
+      <img src="images/BOXLEY EXTRA SMALL.PNG">
     </div>
 
     <p class="hero-subtitle">
@@ -75,7 +72,7 @@
         <div class="card-visual card-emoji"><img src="images/icons/lifesaver.png"></div>
         <strong>Resources Sheet</strong>
         <p>Community resources to help them out</p>
-        <a href="#resources" class="card-link">Print</a>
+        <a href="#" class="card-link" onclick="openResourcesModal(event)">Open</a>
       </div>
 
       <div class="card card--item">
@@ -143,18 +140,51 @@
            onclick="printCard(this,event)">Print</a>
       </div>
 
+  <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/cheaters.png"></div>
+        <a href="images/cheaters.png" class="card-link" target="_blank">Print</a>
+  </div>
+
+   <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/hug.png"></div>
+        
+  </div>     
+
+   <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/news.png"></div>
+  </div> 
+
+     <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/meme_1.JPEG"></div>
+                <a href="images/meme_1.JPEG" class="card-link" target="_blank">Print</a>
+
+  </div> 
+
+       <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/meme_2.JPEG"></div>
+                        <a href="images/meme_2.JPEG" class="card-link" target="_blank">Print</a>
+
+  </div> 
+
+
+       <div class="card card--action">
+        <div class="card-visual card-emoji"><img src="images/meme_3.JPEG"></div>
+       <a href="images/meme_3.JPEG" class="card-link" target="_blank">Print</a>
+
+        
+  </div> 
       <!-- ── Action cards ───────────────────────────────── -->
 
       <div class="card card--action">
-        <div class="card-visual card-emoji">✍️</div>
+        <div class="card-visual card-emoji"><img src="images/icons/hand writing.png"></div>
         <strong>Write your own message</strong>
         <a href="#" class="card-link" onclick="openWriteModal(event)">Submit</a>
       </div>
 
       <div class="card card--action">
-        <div class="card-visual card-emoji">💡</div>
+        <div class="card-visual card-emoji"><img src="images/icons/light bulb.png"></div>
         <strong>Submit an idea</strong>
-        <a href="#submit-idea" class="card-link">Submit</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2REsX_hplGyyR1Sna07xnvTqxOpxfJ3AP0NyQME3Lg8-pmg/viewform" target="_blank" class="card-link">Submit</a>
       </div>
 
     </div>
@@ -189,6 +219,42 @@
 
     </div><!-- /.modal -->
   </div><!-- /.modal-backdrop -->
+
+  <!-- ======= RESOURCES MODAL ======= -->
+  <div class="modal-backdrop" id="resources-modal" aria-modal="true" role="dialog" aria-labelledby="resources-modal-title" hidden>
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2 id="resources-modal-title">Enter your zip code</h2>
+        <button class="modal-close" onclick="closeResourcesModal()" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="resources-zip-row">
+          <input
+            type="text"
+            id="resources-zip-input"
+            maxlength="5"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class="zip-input"
+          />
+          <button class="resources-print-btn" onclick="printResourcesSheet()">Print</button>
+        </div>
+        <p id="resources-zip-error" class="zip-error" aria-live="polite"></p>
+
+        <div class="resources-results-panel" id="resources-results-panel" hidden>
+          <h3 class="resources-panel-heading">Nearby Resources</h3>
+          <ul id="resources-list" class="modal-resources-list"></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ======= WRITE MESSAGE MODAL ======= -->
   <div class="modal-backdrop" id="write-modal" aria-modal="true" role="dialog" aria-labelledby="write-modal-title" hidden>

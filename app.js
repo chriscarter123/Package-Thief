@@ -199,10 +199,11 @@ document.getElementById('finder-modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeFinderModal();
 });
 
-// Close on Escape key — handles both modals
+// Close on Escape key — handles all modals
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeFinderModal();
+    closeResourcesModal();
     closeWriteModal();
   }
 });
@@ -223,6 +224,159 @@ function closeWriteModal() {
 
 document.getElementById('write-modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeWriteModal();
+});
+
+// ─── RESOURCES MODAL ─────────────────────────────────────────────────────────
+
+let currentResources = [];
+
+function openResourcesModal(e) {
+  e.preventDefault();
+  document.getElementById('resources-modal').removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('resources-zip-input').focus(), 50);
+}
+
+function closeResourcesModal() {
+  document.getElementById('resources-modal').setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('resources-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeResourcesModal();
+});
+
+function handleResourcesSearch() {
+  const input   = document.getElementById('resources-zip-input');
+  const errorEl = document.getElementById('resources-zip-error');
+  const panel   = document.getElementById('resources-results-panel');
+  const zip     = input.value.trim();
+
+  errorEl.textContent = '';
+  panel.setAttribute('hidden', '');
+
+  if (!/^\d{5}$/.test(zip)) {
+    errorEl.textContent = 'Please enter a valid 5-digit Philadelphia ZIP code.';
+    return;
+  }
+
+  const coords = ZIP_COORDS[zip];
+  if (!coords) {
+    errorEl.textContent = "This ZIP isn't in our Philadelphia database. Try a Philly ZIP (19101–19154).";
+    return;
+  }
+
+  currentResources = findNearest(coords.lat, coords.lng, COMMUNITY_RESOURCES, 6);
+  renderResourcesList(currentResources);
+  panel.removeAttribute('hidden');
+}
+
+function renderResourcesList(resources) {
+  document.getElementById('resources-list').innerHTML = resources.map(r => `
+    <li>
+      <div class="modal-resource-name">${r.name} <span>(${r.type})</span></div>
+      <div class="modal-resource-addr">${r.address}</div>
+    </li>`).join('');
+}
+
+function printResourcesSheet() {
+  if (!currentResources.length) return;
+
+  const rows = currentResources.map(r => `
+    <div class="row">
+      <div class="row-name">${r.name} <span class="row-type">(${r.type})</span></div>
+      <div class="row-addr">${r.address}</div>
+      ${r.phone ? `<div class="row-phone">${r.phone}</div>` : ''}
+    </div>`).join('');
+
+  const win = window.open('', '', 'width=850,height=1100');
+  win.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nearby Resources</title>
+  <style>
+    @page { size: 8.5in 11in; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 8.5in; height: 11in; background: #fff; }
+    .page {
+      width: 8.5in;
+      height: 11in;
+      padding: 0.75in 0.75in 0.6in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .content { flex: 1; }
+    h1 {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 36pt;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 0.35in;
+      border-bottom: 2px solid #000;
+      padding-bottom: 0.15in;
+    }
+    .row {
+      margin-bottom: 0.22in;
+      padding-bottom: 0.22in;
+      border-bottom: 1px solid #ddd;
+    }
+    .row:last-child { border-bottom: none; }
+    .row-name {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 3pt;
+    }
+    .row-type {
+      font-weight: 400;
+    }
+    .row-addr, .row-phone {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 11pt;
+      color: #333;
+      margin-top: 1pt;
+    }
+    .footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 0.25in;
+    }
+    .hashtag {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 10pt;
+      color: #999;
+    }
+    .mascot { width: 80px; height: auto; transform: rotate(-8deg); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="content">
+      <h1>Nearby Resources</h1>
+      ${rows}
+    </div>
+    <div class="footer">
+      <span class="hashtag">#dearpackagethief</span>
+      <div class="mascot">${MASCOT_SVG}</div>
+    </div>
+  </div>
+</body>
+</html>`);
+  win.document.close();
+  setTimeout(() => win.print(), 400);
+}
+
+// Resources ZIP input listeners
+document.getElementById('resources-zip-input').addEventListener('input', e => {
+  if (e.target.value.replace(/\D/g, '').length === 5) handleResourcesSearch();
+});
+document.getElementById('resources-zip-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleResourcesSearch();
+  if (e.key.length === 1 && !/\d/.test(e.key)) e.preventDefault();
 });
 
 // Inline SVG of the mascot (embedded so it renders in the print window)

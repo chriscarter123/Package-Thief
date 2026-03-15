@@ -331,6 +331,89 @@ blockquote { font-style: normal; border: none; padding: 0; }
 }
 
 /* =============================================
+   RESOURCES MODAL
+   ============================================= */
+
+/* Zip input + Print button side by side */
+.resources-zip-row {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.resources-zip-row .zip-input {
+  flex: 1;
+}
+
+/* Bordered "Print" button next to the zip field */
+.resources-print-btn {
+  padding: .55rem .9rem;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--link);
+  font-family: var(--sans);
+  font-size: .9rem;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: underline;
+  transition: opacity .15s;
+}
+
+.resources-print-btn:hover { opacity: .7; }
+
+/* White results panel */
+.resources-results-panel {
+  margin-top: .85rem;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 1rem 1.1rem 0.25rem;
+}
+
+.resources-results-panel[hidden] { display: none; }
+
+.resources-panel-heading {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .65rem;
+}
+
+/* Resource list items */
+.modal-resources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-resources-list li {
+  padding: .75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.07);
+}
+
+.modal-resources-list li:last-child { border-bottom: none; }
+
+.modal-resource-name {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--sans);
+  color: var(--text);
+  margin-bottom: .2rem;
+}
+
+.modal-resource-name span {
+  font-weight: 400;
+}
+
+.modal-resource-addr {
+  font-size: .9rem;
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+/* =============================================
    WRITE MESSAGE MODAL
    ============================================= */
 .write-textarea {
