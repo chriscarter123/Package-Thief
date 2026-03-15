@@ -954,6 +954,25 @@ blockquote { font-style: normal; border: none; padding: 0; }
 .footer-sub { font-size: .78rem; color: #999; }
 
 /* =============================================
+   VIDEO FOOTER
+   ============================================= */
+.video-footer {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1.5rem;
+}
+
+.footer-video {
+  width: clamp(160px, 30vw, 320px);
+  height: auto;
+  display: block;
+  /* screen blend: black bg becomes "transparent", mascot lines show white */
+  mix-blend-mode: screen;
+}
+
+/* =============================================
    PRINT STYLES
    ============================================= */
 @media print {
